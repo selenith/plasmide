@@ -1,0 +1,56 @@
+html, body {height: 100%}
+.wrap {min-height: 100%}
+ 
+.mainContainer {
+    overflow:auto;
+    padding-bottom: 70px;
+}
+ 
+ 
+/*Opera Fix*/
+body:before {
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top:-32767px;
+}
+
+/*début page*/
+
+.image-header{
+	height:210%;
+	margin-top:-10%;
+}
+
+.page{
+	background-color:#fff;
+}
+
+
+/*pied de page*/
+footer{	
+	position: relative;
+    clear:both;
+    margin-top: -70px;
+    height: 70px;	
+	border-top: 1px solid #757575;
+	text-align:center;
+	padding:10px 10px 10px 0;
+	color: #fff;
+	background-color:#272727;
+	
+}
+
+footer a
+{
+	color:#e67e22;
+}
+
+
+/*Formulaires*/
+
+form{
+	
+	text-align:center;
+}

@@ -1,0 +1,109 @@
+/** menu d'administration */
+* {margin:0;padding:0}
+ 
+html, body {height: 100%}
+.wrap {min-height: 100%}
+ 
+.mainContainer {
+    overflow:auto;
+    padding-bottom: 70px;
+}
+ 
+
+ 
+/*Opera Fix*/
+body:before {
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top:-32767px
+}
+
+
+
+	
+.image-header {
+    height: 210%;
+    margin-top: -10%;
+}
+
+.bodyAdmin{
+	background-color:#c2cfe8;
+	margin:0;
+
+}
+
+.logoPageAdmin{
+	text-align:center;
+	margin-top:5%;
+	margin-bottom:25px;
+}
+
+.adminCadreLogin{
+	max-width:250px;
+	margin:0 auto 0 auto;
+	background-color:white;
+	border:1px solid red;
+	border-radius:5px;
+	padding:10px;
+}
+
+
+
+
+.pageAdmin table{
+	 border-collapse:collapse;
+	 width:100%;
+	 text-align:center;
+}
+
+.pageAdmin table, td{
+ border-width:1px; 
+ border-style:solid; 
+ border-color:black;
+
+}
+
+.pageAdmin table img{
+	height:32px;
+	width:32px;
+	margin:3px 5px;
+	cursor:pointer;
+}
+
+.pageAdmin .article{
+	margin: 0 auto;
+	background-color:#DCDFE5;
+	padding:10px;
+	margin-top:10px;
+	border:1px solid white;
+	border-radius:5px;
+}
+
+
+
+
+/*Pied de page*/
+footer{
+	text-align: center;
+	clear: both;
+	margin-top: -70px;
+    height: 70px;
+	position:relative;
+	padding:4px 10px 10px 0;	
+	color: #ffffff;
+	
+}
+footer a{
+	color:grey;
+	font-weight:bold;
+}
+footer a:hover
+{
+	/*text-decoration:underline;*/
+	text-shadow: 0px 0px 8px #FFF;
+}
+footer img{
+	vertical-align:middle;
+}
