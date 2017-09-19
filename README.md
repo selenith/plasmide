@@ -24,14 +24,11 @@ Specifications
 La version actuelle de plasmide contient les caracteristiques suivantes :
 
 - Fonctionne sans base de donnée
-- Forum sans base de données integré.
-- Agenda (raidplanner) intégré.
-- Codex (moteur de wiki simplifié) intégré. 
-- Systeme de page de contact.
 - Gestion d'utilisateurs et de droits multiples.
 - Gestions et upload de media simplifiés.
 - Articles commentables.
 - Flux RSS.
+- Module de contact disponible  https://github.com/selenith/plasmide-contact
 
 
 Prés-requis
