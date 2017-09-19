@@ -48,6 +48,7 @@ Pensez à donner les droits en ecriture au systeme dans les dossiers files/, cor
 
 Configuration de NGINX
 ===========
+Modifiez la configuration du fichier correspondant à votre site dans /etc/nginx/sites-enabled/ :
 
 ```
 location / {
@@ -73,7 +74,7 @@ location ~ \.php$ {
 
 Administration
 ===========
-Rendez vous à la page d'administration : http://votreDomaine/?mod=admin (remplacer "votreDomaine" par l'ip ou le nom de domaine de votre serveur).
+Rendez vous à la page d'administration : http(s)://votreDomaine/admin (remplacer "votreDomaine" par l'ip ou le nom de domaine de votre serveur).
 
 - Login : admin
 - Password : plasmide
