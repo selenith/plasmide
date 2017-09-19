@@ -462,7 +462,6 @@ function getConfig(){
 }
 
 function validEditConf(){
-	include('../../../core/model/Config.php');
 	$retour = array('statut'=> 'ok');
 	$arch = new Archiviste();
 	
