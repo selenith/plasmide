@@ -49,26 +49,27 @@ Pensez à donner les droits en ecriture au systeme dans les dossiers files/, cor
 Configuration de NGINX
 ===========
 
- location / {
-     try_files $uri /router.php$is_args$args;
+```
+location / {
+    try_files $uri /router.php$is_args$args;
         
- }
+}
 
 
 
 # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
 
- location ~ \.php$ {
-     fastcgi_pass unix:/var/run/php5-fpm.sock;
-     fastcgi_index index.php;
-     include fastcgi_params;
-     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+location ~ \.php$ {
+    fastcgi_pass unix:/var/run/php5-fpm.sock;
+    fastcgi_index index.php;
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
-     fastcgi_split_path_info ^(.+\.php)(/.+)$;
-     # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
 
- }
-
+}
+```
 
 Administration
 ===========
