@@ -29,7 +29,7 @@ La version actuelle de plasmide contient les caracteristiques suivantes :
 - Articles commentables.
 - Flux RSS.
 - Module de contact disponible  https://github.com/selenith/plasmide-contact
-
+- Module de forum disponible https://github.com/selenith/plasmide-forum
 
 Prés-requis
 ===========
