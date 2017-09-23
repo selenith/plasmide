@@ -3,7 +3,6 @@ include('mods/site/model/Article.php');
 include('mods/site/view/VueSite.php');
 include('mods/site/model/Commentaire.php');
 include('mods/site/config.php');
-include('tools/SBBCodeParser/SBBCodeParser.php');
 
 $numPage = 0;
 $mod = 'news';

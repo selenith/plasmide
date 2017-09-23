@@ -32,32 +32,14 @@ class Commentaire{
 		$nomSite = Config::getVal('nom', 'core/data/');
 		$adresseSite = Config::getVal('adresse', 'core/data/');
 		
-                /*
-		$message = str_replace("<", "&lt;", $message);
-		$message = str_replace(">", "&gt;", $message);
-		$message = str_replace("\'", "'", $message);
-		$message = str_replace('\"', '"', $message);
-		$message = str_replace(CHR(10), "<br>", $message);	
-                */
-		$pseudo = htmlspecialchars($pseudo);
+		
+                $message = htmlspecialchars($message);
+                $message = str_replace(CHR(10), "<br>", $message);	
+		
+                $pseudo = htmlspecialchars($pseudo);
                 
-                $parser = new \SBBCodeParser\Node_Container_Document();
-
-                $smilePath = $_SERVER['SERVER_NAME'].'/tools/sceditor/emoticons/';
-                $parser->add_emoticons(array(
-                    ':)' => $smilePath.'smile.png',
-                    ':D' => $smilePath.'grin.png'
-                    ));
-
-                $message = $parser->parse($message)
-                    ->detect_links()
-                    ->detect_emails()
-                    ->detect_emoticons()
-                    ->get_html();
  
 
-		//date_default_timezone_set('Europe/Paris');
-		//$date = date('Y-m-d H\hi');
 		$date = time();
 
 		$comment = new Archivable('Commentaire');

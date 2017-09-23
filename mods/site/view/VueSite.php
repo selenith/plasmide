@@ -241,15 +241,6 @@ class VueSite{
 	}
 
         
-        private function addSceditorHead(){
-            $this->head.='       <link rel="stylesheet" href="/tools/sceditor/minified/themes/default.min.css" type="text/css" />'.PHP_EOL;
-        } 
-
-        private function addSceditorScript(){
-            $this->script.='        <script type="text/javascript" src="/tools/sceditor/minified/jquery.sceditor.bbcode.min.js"></script>'.PHP_EOL.
-                            '       <script type="text/javascript" src="/mods/site/view/sceditorStart.js"></script>'.PHP_EOL;
-            
-        }
 
 	private function displayCom(){
 		$html='';
@@ -267,8 +258,6 @@ class VueSite{
 	}	
 	
 	private function displayForm(){
-		$this->addSceditorHead();
-                $this->addSceditorScript();
 
                 $content ='
 			<form method="post" action="./'.$this->article->get('id').'#infoComm">					
