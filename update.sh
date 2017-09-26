@@ -24,7 +24,7 @@ neutre='\e[0;m'
 execPath=$(readlink -f $(dirname $0))
 cd $execPath
 
-sourceVersion=$(curl https://rawssgithubusercontent.com/selenith/plasmide/master/README.md |grep Version)
+sourceVersion=$(curl https://raw.githubusercontent.com/selenith/plasmide/master/README.md |grep Version)
 
 retval=$?
 if [ $retval != 0 ]; then
