@@ -82,6 +82,7 @@ else
     echo -e Copie des nouveaux fichiers.
     cp -r plasmide/* ./
     chmod +x update.sh
+    chmod -R 777 tools/htmlpurifier/library/HTMLPurifier/DefinitionCache
     echo -e Fin de mise a jour du noyau plasmide.
 fi
 
