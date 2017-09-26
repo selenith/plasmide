@@ -4,8 +4,8 @@ Plasmide
 CMS PHP sans base de données
 
 - Site :	http://plasmide.selenith.ovh
-- Version :	3.1.1
-- Date : 	2016 - 07
+- Version :	3.2.2
+- Date : 	2017 - 09
 - Auteur : 	Selenith - http://selenith.ovh
 
 
@@ -77,6 +77,11 @@ Rendez vous à la page d'administration : http(s)://votreDomaine/admin (remplace
 - Password : plasmide
 
 Rendez vous ensuite dans l'onglet 'Parametres' afin d'indiquer les parametres de base de votre site.
+
+
+mise a jour
+===========
+Lancer simplement le script update.sh
 
 
 Configuration des modules
