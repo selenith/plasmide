@@ -20,11 +20,19 @@ blanc='\e[1;37m'
 
 neutre='\e[0;m'
 
+
+
+#verification des droits
+if [[ $EUID -ne 0 ]]; then
+  echo "Vous devez etre root ou disposer des droits superutilisateur pour executer ce script" 2>&1
+  exit 1
+fi
+
 # placement dans le bon repertoire
 execPath=$(readlink -f $(dirname $0))
 cd $execPath
 
-sourceVersion=$(curl https://raw.githubusercontent.com/selenith/plasmide/master/README.md |grep Version)
+sourceVersion=$(curl -s https://raw.githubusercontent.com/selenith/plasmide/master/README.md |grep Version)
 
 retval=$?
 if [ $retval != 0 ]; then
@@ -36,6 +44,8 @@ fi
 
 
 localVersion=$(grep Version README.md)
+
+echo -e Verification de la necessité de mise a jour.
 
 if [[ $sourceVersion == $localVersion ]]; then
     echo -e $vertclair'Plasmide est a jour'$neutre
@@ -50,7 +60,7 @@ else
     for fichier in $(ls)
     do
         if [[ $fichier != 'files' && $fichier != 'core' && $fichier != 'plasmide' && $fichier != 'templates' && $fichier != 'feed' && $fichier != 'mods' ]]; then
-            rm -R $fichier
+            rm -Rf $fichier
             echo -e $jaune'suppression de '$fichier''$neutre
         fi
     done
@@ -58,16 +68,16 @@ else
     for fichier in $(ls core)
     do
         if [[ $fichier != 'data' ]]; then
-             rm -R $fichier
+             rm -Rf $fichier
             echo -e $jaune'suppression de core/'$fichier''$neutre
         fi
     done
 
-    rm -R plasmide/files
-    rm -R plasmide/core/data/*/*
-    rm -R plasmide/templates
-    rm -R plasmide/feed
-    rm -R plasmide/mods
+    rm -Rf plasmide/files
+    rm -Rf plasmide/core/data/*/*
+    rm -Rf plasmide/templates
+    rm -Rf plasmide/feed
+    rm -Rf plasmide/mods
     
     echo -e Copie des nouveaux fichiers.
     cp -r plasmide/* ./
