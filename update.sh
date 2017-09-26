@@ -98,4 +98,4 @@ done
 echo -e $cyanclair'Fin de procédure de mise a jour des modules'$neutre
 echo -e Nettoyage des fichiers temporaires
 rm -rf plasmide
-echo -e $verclair'Mise a jour terminée.'$neutre
+echo -e $vertclair'Mise a jour terminée.'$neutre
