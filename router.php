@@ -45,12 +45,20 @@ if($nbParams>0){
 	if(count($menus)>0){
 		$menu = $menus[0];
 		$switcher = $menu->get('mod');
+                
+                $displayId = false;
+                echo('existe pas ecore');
+                if(file_exists('mods/'.$switcher.'/hook.php')){
+                    include('mods/'.$switcher.'/hook.php');
+                    echo('existe');
+                }
+                if($displayId){
+                    $switcher .= '/'.$menus[0]->get('id');
+                }
 
                 header("Status: 301 Moved Permanently", false, 301);
-                header("Location: ./".$switcher);
+                header("Location: /".$switcher);
 
-		//$_GET['id'] = $idHome ;
-		//$_GET['mod'] =$switcher;
 	}	
 }
 
@@ -68,7 +76,7 @@ if(in_array ($switcher, $modList)){
 	include('core/view/VueModuleNotFound.php');
 	$body = VueModuleNotFound::getBody();
 	$head = VueModuleNotFound::getHead($nomSite);
+        include($templatePath.'index.php');
 }
 
-//include($templatePath.'index.php');
 ?>

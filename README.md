@@ -4,7 +4,7 @@ Plasmide
 CMS PHP sans base de données
 
 - Site :	http://plasmide.selenith.ovh
-- Version :	3.2.2
+- Version :	3.2.3
 - Date : 	2017 - 09
 - Auteur : 	Selenith - http://selenith.ovh
 
