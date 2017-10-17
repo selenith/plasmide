@@ -1,5 +1,4 @@
-Plasmide
-========
+# Plasmide
 
 CMS PHP sans base de données
 
@@ -9,8 +8,7 @@ CMS PHP sans base de données
 - Auteur : 	Selenith - http://selenith.ovh
 
 
-Presentation
-============
+# Presentation
 
 Plasmide CMS (Content Management System) est un Systeme de gestion de contenu dont le maitre mot est la simplicité. Ses grandes forces sont sa modularité et le fait qu'il fonctionne sans base de données ! 
 
@@ -18,8 +16,8 @@ Vous allez pouvoir créer, personnaliser et mettre en ligne votre site  sans avo
 
 De plus Plasmide est disponible sous licence GNU_GPL v3. Vous pouvez donc le télécharger, l'utiliser et le modifier gratuitement !
 
-Specifications
-==============
+
+# Specifications
 
 La version actuelle de plasmide contient les caracteristiques suivantes :
 
@@ -28,33 +26,34 @@ La version actuelle de plasmide contient les caracteristiques suivantes :
 - Gestions et upload de media simplifiés.
 - Articles commentables.
 - Flux RSS.
-- Module de contact disponible  https://github.com/selenith/plasmide-contact
-- Module de forum disponible https://github.com/selenith/plasmide-forum
-- Module de raidplanner disponible https://github.com/selenith/plasmide-raidplanner
-- Module de wiki disponible https://github.com/selenith/plasmide-codex
+- De nombreux Module disponibles (voir plus bas).
 
-Prés-requis
-===========
+
+# Prés-requis
+
 - Votre serveur web doit disposer de PHP version 5.2 minimum.
 - La bibliotheque GD ou ImageMagic doit etre activée pour PHP.
 - Avoir acces a la configuration de votre serveur web
 
-Installation
-===========
+# Installation
 
-Methode automatique : 
+## Methode automatique : 
 
 ```
 wget https://raw.githubusercontent.com/selenith/plasmide/master/plasmide.sh
 chmod +x plasmide.sh
 ./plasmide.sh install defaut
 ```
-Methode Manuelle : 
-Apres avoir télécharger le fichier ZIP sur https://github.com/selenith/plasmide, decompressez le et placez le contenu dans le dossier de publication de votre serveur (habituellement /var/www/).
-Pensez à donner les droits en ecriture au systeme dans les dossiers files/, core/data/, tools/HTMLPurifier, et mods/[nom du mod]/data/.
+*Selon votre configuration vous devrez préceder ./plasmide.sh de la commande `sudo `*
 
-Configuration de NGINX
-===========
+## Methode Manuelle : 
+
+Apres avoir télécharger le fichier ZIP sur https://github.com/selenith/plasmide, decompressez le et placez le contenu dans le dossier de publication de votre serveur (habituellement /var/www/).
+Pensez à donner les droits en ecriture au systeme dans les dossiers `files`, `feed`, `data`, et `tools/HTMLPurifier`.
+
+
+# Configuration de NGINX
+
 Modifiez la configuration du fichier correspondant à votre site dans /etc/nginx/sites-enabled/ :
 
 ```
@@ -62,8 +61,6 @@ location / {
     try_files $uri /router.php$is_args$args;
         
 }
-
-
 
 # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
 
@@ -99,8 +96,8 @@ location ~ ^/router\.php(/|$) {
 }   
 ```
 
-Administration
-===========
+# Administration
+
 Rendez vous à la page d'administration : http(s)://votreDomaine/admin (remplacer "votreDomaine" par l'ip ou le nom de domaine de votre serveur).
 
 - Login : admin
@@ -109,14 +106,36 @@ Rendez vous à la page d'administration : http(s)://votreDomaine/admin (remplace
 Rendez vous ensuite dans l'onglet 'Parametres' afin d'indiquer les parametres de base de votre site.
 
 
-mise a jour
-===========
+# mise a jour
+
 Lancer la commande suivante via le script plasmide.sh
 ```
 ./plasmide.sh update
 ```
 
 
-Configuration des modules
-===========
+# Modules
+
+## Liste des modules
+
+- site https://github.com/selenith/plasmide-site **installé par defaut**
+- admin https://github.com/selenith/plasmide-admin **installé par defaut**
+- news https://github.com/selenith/plasmide-news **installé par defaut**
+- auth https://github.com/selenith/plasmide-auth **installé par defaut**
+- contact https://github.com/selenith/plasmide-contact
+- forum https://github.com/selenith/plasmide-forum
+- raidplanner https://github.com/selenith/plasmide-raidplanner
+- codex (wiki simplifié) https://github.com/selenith/plasmide-codex
+
+
+## installation automatique
+
+utilisez le script **plasmide.sh** :
+```
+./plasmide.sh install [nom]
+#exemple
+./plasmide.sh install raidplanner
+```
+## Configuration
+
 Referez vous aux fichiers readme.md dans les dossiers des modules pour plus d'infos.
