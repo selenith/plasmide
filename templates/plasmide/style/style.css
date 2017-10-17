@@ -1,27 +1,18 @@
-html, body {height: 100%}
-.wrap {min-height: 100%}
- 
-.mainContainer {
-    overflow:auto;
-    padding-bottom: 70px;
+html{
+	position: relative;
+  	min-height: 100%;
 }
+
  
  
 /*Opera Fix*/
-body:before {
-    content:"";
-    height:100%;
-    float:left;
-    width:0;
-    margin-top:-32767px;
+body {
+     margin-bottom: 70px;
 }
 
 /*début page*/
 
-.image-header{
-	height:210%;
-	margin-top:-10%;
-}
+
 
 .page{
 	background-color:#fff;
@@ -30,10 +21,11 @@ body:before {
 
 /*pied de page*/
 footer{	
-	position: relative;
-    clear:both;
-    margin-top: -70px;
-    height: 70px;	
+ 	position: absolute;
+  	bottom: 0;
+  	width: 100%;
+  	/* Set the fixed height of the footer here */
+      	height: 60px;	
 	border-top: 1px solid #757575;
 	text-align:center;
 	padding:10px 10px 10px 0;
@@ -48,9 +40,3 @@ footer a
 }
 
 
-/*Formulaires*/
-
-form{
-	
-	text-align:center;
-}

@@ -1,15 +1,17 @@
 .article{
-	
-	color: #3b414f;
-	padding-top:10px;
-	background-color:#fff;
-	border-bottom: 1px solid #cecece;
+    color: #3b414f;
+    padding-top:10px;
+    background-color:#fff;
+    border-top:1px solid #cecece;
+    margin-top:2rem;
+}
+
+.article:first-child{
+    border:none;
 }
 
 .article a{
-	
 	color:#e67e22;
-	
 }
 
 
@@ -19,10 +21,8 @@
 }
 
 .corpsArticle{
-	
 	margin:0 auto;
 	padding-bottom:20px;
-	
 }
 
 

@@ -11,9 +11,9 @@ class Config extends Archivable{
 	public static function getDbPath(){
 		
 		if(preg_match("/mods/", $_SERVER['PHP_SELF'])){
-			return '../../../core/data/';
+			return '../../../data/';
 		}else if(preg_match("/index\.php/", $_SERVER['PHP_SELF'])){
-			return 'core/data/';
+			return 'data/';
 		}else {
 			return false;
 		}
@@ -30,7 +30,7 @@ class Config extends Archivable{
 		return $conf;
 	}	
 	
-	public static function getVal($champ, $dataBase = 'core/data/'){
+	public static function getVal($champ, $dataBase = 'data/'){
 		
 				
 		$arch = new Archiviste($dataBase);

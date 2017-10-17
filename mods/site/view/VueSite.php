@@ -117,45 +117,31 @@ class VueSite{
 			$code = $articles[$i]->get('code');
 			
 			if( $articles[$i]->get('comment') == "oui"){			
-				$code.= '<div class="text-right datePlusCom">Publié le '. date('d\/m\/Y',$articles[$i]->get('date')) .' - <a href="/site/art/'.$articles[$i]->get('id').'" >Commentaires <span class="badge">'.$articles[$i]->get('nbrComment').'</span> </a></div>';
+				$code.= '<div class="text-right datePlusCom">Publié le '. date('d\/m\/Y',$articles[$i]->get('date')) .' - <a href="/site/art/'.$articles[$i]->get('id').'" >Commentaires <span class="badge badge-pill badge-secondary">'.$articles[$i]->get('nbrComment').'</span> </a></div>';
 			}
 			$html.= SiteConfig::forgerBlock($articles[$i]->get('nom'), $code);
 		}		
 		
-		$pagination = '
-				<div class="container text-center">';
+		$pagination = '';
 
 		if($this->nbPage > 1){
-			$pagination .= '
-				<nav>
-				  <ul class="pagination">';
+                        $pagination .= '<nav>'.PHP_EOL.'                 <ul class="pagination justify-content-center">'.PHP_EOL;
 
 			for($i=0 ; $i<$this->nbPage ; $i++){			
 				
 				
 				//mise en couleur de la page courante	
 				if($i == $this->numPage){
-					$pagination.= '<li class="disabled" ><a>'. ($i+1) .'</a></li>';
+					$pagination.='                      <li class="page-item active" ><a class="page-link">'. ($i+1) .'</a></li>'.PHP_EOL;
 				}else{
-					$pagination.='<li><a href="/site/'. $categ .'/'.$i.'" > '. ($i+1) .'</a></li> ';
+					$pagination.='                      <li class="page-item"><a class="page-link" href="/site/'. $categ .'/'.($i+1).'" > '. ($i+1) .'</a></li>'.PHP_EOL;
 				}													
 			}		
 			
-
-			$pagination .='
-				  </ul>
-				</nav>';
+                        $pagination .='                 </ul>'.PHP_EOL.'                </nav>'.PHP_EOL;
 		}		
 
-		
-
-
-		$pagination .='
-			</div>';
-
 		$this->body = $html.$pagination ;
-
-		
 	}
 
 	public function forgerPageNews(){
@@ -181,43 +167,36 @@ class VueSite{
 			$code = $articles[$i]->get('code');
 			
 			if( $articles[$i]->get('comment') == "oui"){			
-				$code.= '<div class="text-right datePlusCom">Publié le '. date('d\/m\/Y',$articles[$i]->get('date')) .' - <a href="/site/art/'.$articles[$i]->get('id').'" >Commentaires <span class="badge">'.$articles[$i]->get('nbrComment').'</span> </a></div>';
+				$code.= '<div class="text-right datePlusCom">Publié le '. date('d\/m\/Y',$articles[$i]->get('date')) .' - <a href="/site/art/'.$articles[$i]->get('id').'" >Commentaires <span class="badge badge-pill badge-secondary">'.$articles[$i]->get('nbrComment').'</span> </a></div>';
 			}else{			
 				$code.= '<div class="text-right datePlusCom">Publié le '. date('d\/m\/Y',$articles[$i]->get('date')) .' - <a href="/site/art/'.$articles[$i]->get('id').'" >Lien permanent </a></div>';
 			}
 			$html.= SiteConfig::forgerBlock($articles[$i]->get('nom'), $code);
 		}		
 		
-		$pagination = '
-				<div class="container text-center">';
+		$pagination = '';
 
 		if($this->nbPage > 1){
-			$pagination .= '
-				<nav>
-				  <ul class="pagination">';
+			$pagination .= '<nav>'.PHP_EOL.'                 <ul class="pagination justify-content-center">'.PHP_EOL;
 
 			for($i=0 ; $i<$this->nbPage ; $i++){			
 				
 				
 				//mise en couleur de la page courante	
 				if($i == $this->numPage){
-					$pagination.= '<li class="disabled" ><a>'. ($i+1) .'</a></li>';
+					$pagination.='                      <li class="page-item active" ><a class="page-link">'. ($i+1) .'</a></li>'.PHP_EOL;
 				}else{
-					$pagination.='<li><a href="/news/'.($i+1).'" > '. ($i+1) .'</a></li> ';
+					$pagination.='                      <li class="page-item"><a class="page-link" href="/news/'.($i+1).'" > '. ($i+1) .'</a></li> '.PHP_EOL;
 				}													
 			}		
 			
 
-			$pagination .='
-				  </ul>
-				</nav>';
+			$pagination .='                 </ul>'.PHP_EOL.'                </nav>'.PHP_EOL;
 		}		
 
 		
 
 
-		$pagination .='
-			</div>';
 
 		$this->body = $html.$pagination ;
 
@@ -226,7 +205,7 @@ class VueSite{
 
 		
 	public function setFormBase(){
-		$this->formInfos = '<div id="infoComm" class="panel panel-default" > <div class="panel-body"> Pour poster un commentaire, utilisez le formulaire ci-dessous :</div></div>';
+		$this->formInfos = '<div id="infoComm" class="panel panel-default" > <div class="panel-body"> <p>Pour poster un commentaire, utilisez le formulaire ci-dessous :</p></div></div>';
 		$this->formComplet = true;
 	}
 	
@@ -247,11 +226,14 @@ class VueSite{
 		$coms = $this->coms;
 		$nbComs = count($coms);		
 		for($i=0; $i<$nbComs; $i++){
-			$html.=	'<div class="panel panel-default">
-				  <div class="panel-heading">Par '.$coms[$i]['pseudo'].', le '.date('d\/m\/Y',$coms[$i]['date']).' </div>
-				  <div class="panel-body">
-				   '.$coms[$i]['texte'].'
-				  </div>
+			$html.=	'<div class="card mb-2">
+                                     <div class="card-body">
+				        <h4 class="card-title">'.$coms[$i]['pseudo'].'</h4>
+                                        <h6 class="card-subtitle mb-2 text-muted">le '.date('d\/m\/Y',$coms[$i]['date']).'</h6>
+				        <p class="card-text">
+				        '.$coms[$i]['texte'].'
+				        </p>
+                                    </div>
 				</div>';
 		}
 		return $html;
@@ -263,24 +245,20 @@ class VueSite{
 			<form method="post" action="./'.$this->article->get('id').'#infoComm">					
 				<div class="form">
 					'.$this->formInfos.'
-					<fieldset >
-						<legend>Votre pseudo</legend>					
-						<div >		
-							<input class="champForm" name="auteur" type="text" value="'.$this->auteur.'" placeholder="Pseudonyme" required >
-						</div>								
-					</fieldset>
-					<fieldset>
-						<legend>Votre message</legend>
-						<div >
-							Message :
-						</div>
-						<textarea name="message" class="form-control" id="editor" rows="5"  required>'.$this->message.'</textarea>
-					</fieldset>
-					<div>
-						<input type="hidden" name="action" value="envoi" /> 
-						<input type="submit" class="btn btn-default" value="Envoi" />
+					<div class="form-group" >
+						<label for="auteurCom">Pseudonyme</label>					
+						<input class="form-control" id="auteurCom" name="auteur" type="text" value="'.$this->auteur.'" placeholder="Pseudonyme" required >
 					</div>
-				</div></form>';
+					<div class="form-group">
+						<label for="editor">Message</label>
+						<textarea name="message" class="form-control" id="editor"  required>'.$this->message.'</textarea>
+					</div>
+					<div class="form-group row justify-content-center">
+					    <input type="submit" class="btn btn-primary" value="Envoi" />
+					</div>
+                                        <input type="hidden" name="action" value="envoi" /> 
+				</div>
+                            </form>';
 			
 			
 			
@@ -295,7 +273,7 @@ class VueSite{
 				'.$this->formInfos.'
 			</div>';
 			
-		return SiteConfig::forgerBlock('Réagissez à cet article',$content);
+		return SiteConfig::forgerBlock('Commentaire',$content);
 		
 	}
 }

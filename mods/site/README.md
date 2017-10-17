@@ -17,6 +17,6 @@ Module de site web pour Plasmide CMS.
 
 Prés-requis
 ===========
-- Plasmide (On ne sait jamais ^^)
+- Plasmide
 - Mod auth
 

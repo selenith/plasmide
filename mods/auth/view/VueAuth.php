@@ -18,7 +18,7 @@ class VueAuth{
                         <label for="pass">Password</label>
                         <input type="password" class="form-control" id="pass"  name="pass" placeholder="Pass">
                     </div>
-                    <input type="submit" class="btn btn-default" value="Connexion" id="envoi">
+                    <input type="submit" class="btn btn-primary" value="Connexion" id="envoi">
                     </form>
                 </div>';
 				
@@ -37,7 +37,7 @@ class VueAuth{
                             <label for="mail">Adresse mail</label>
                             <input type="email" class="form-control" id="mail" name="mail" placeholder="Email">
                         </div>
-                        <input type="submit" class="btn btn-default" value="S\'enregistrer" id="envoi">
+                        <input type="submit" class="btn btn-primary" value="S\'enregistrer" id="envoi">
                     </form>
                 </div>';
 				
@@ -212,7 +212,7 @@ class VueAuth{
 								<p>Indiquez l\'adresse mail associée a votre compte: </p>
 								<form method="post" action="/auth/reinitPass" class="text-center">				
 								<input type="email" class="form-control" id="mail"  name="mail"><br />
-								<input type="submit" class="btn btn-default" value="Envoyer" id="envoi">
+								<input type="submit" class="btn btn-primary" value="Envoyer" id="envoi">
 								</form>
 							</div>';
 		
@@ -232,7 +232,7 @@ class VueAuth{
 								<p>Indiquez l\'adresse mail associée a votre compte: </p>
 								<form method="post" action="/auth/reinitPass" class="text-center">				
 								<input type="email" class="form-control" id="mail"  name="mail"><br />
-								<input type="submit" class="btn btn-default" value="Envoyer" id="envoi">
+								<input type="submit" class="btn btn-primary" value="Envoyer" id="envoi">
 								</form>
 							</div>';
 		
@@ -257,7 +257,7 @@ class VueAuth{
 	
 	public function pageSuppress(){
 		$texte ='<div class="alert alert-info" role="alert">Etes vous certain de vouloir <b>supprimer votre compte ?</div>';
-		$texte .='<div class="text-center"><a href="/auth/supress" class="btn btn-default">Oui</a>  <a href="/auth/profil" class="btn btn-default">Non</a></div>';
+		$texte .='<div class="text-center"><a href="/auth/supress" class="btn btn-primary">Oui</a>  <a href="/auth/profil" class="btn btn-primary">Non</a></div>';
 		
 		$this->body =SiteConfig::forgerBlock('Supprimer mon compte ',$texte);
 		$this->head = '<title>'.$this->nomSite.' - Erreur </title>'.PHP_EOL;
@@ -282,7 +282,7 @@ class VueAuth{
 		}
 		
 		
-		$html = '<div class="text-right" ><a href="/auth/pageSuppress" class="btn btn-default">Supprimer mon compte</a></div>';
+		$html = '<div class="text-right" ><a href="/auth/pageSuppress" class="btn btn-primary">Supprimer mon compte</a></div>';
 		
 		$html .= $this->creerFormProfil($mail, $notifEvent, $notifComEvent);
 		
@@ -345,7 +345,7 @@ class VueAuth{
 								<div>
 									<br />
 									<br />
-									<input type="submit" class="btn btn-default" value="Enregistrer" />
+									<input type="submit" class="btn btn-primary" value="Enregistrer" />
 								</div>	
 							</form>
 							';

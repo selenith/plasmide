@@ -52,9 +52,9 @@ fonctions :
 class Archiviste{	
 	
 	//A modifier au besoin
-	private $cheminBase = '../data/';
+	private $cheminBase = '';
 	
-	function Archiviste($dataPath = 'core/data/'){
+	function Archiviste($dataPath = 'data/'){
 		//initialisation de la position de la database
 		// data/ si l'index du site est utilisé.
 		// ../data/ si c'est une requete asynchrone vers un controleur.

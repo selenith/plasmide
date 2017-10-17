@@ -4,7 +4,7 @@ include('mods/site/view/VueSite.php');
 include('mods/site/model/Commentaire.php');
 include('mods/site/config.php');
 
-$numPage = 0;
+$numPage = 1;
 $mod = 'news';
 $article = false;
 
@@ -79,8 +79,8 @@ if(isset($param[2]) && $param[1]=='art'){
 }else if(isset($param[1])){
 	
 	$id=$param[1];
-	if(isset($_GET['page'])){
-		$numPage = $_GET['page'];		
+	if(isset($param[2])){
+		$numPage = $param[2];		
 	}
 	
 	$vueSite->setPageName(Menu::getNom($id));

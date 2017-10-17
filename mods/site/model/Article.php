@@ -2,25 +2,8 @@
 
 class Article extends Archivable{
 
-        public  static function getDbPath(){
-                if(preg_match("/site\/controller/", $_SERVER['PHP_SELF'])){
-                        return '../data/';
-                }else if(preg_match("/mods/", $_SERVER['PHP_SELF'])){
-                        return '../../site/data/';
-                }else if(preg_match("/index\.php/", $_SERVER['PHP_SELF'])){
-                        return 'mods/site/data/';
-                }else{
-                        return false;
-                }
-        }
-	
 
-	public function __construct(){
-
-                $this->type = 'Article';
-        }
-
-	public static $dbSite = 'mods/site/data/';
+	public static $dbSite = 'data/';
 	
 	public static function arbreMenu($id_parent){
 	

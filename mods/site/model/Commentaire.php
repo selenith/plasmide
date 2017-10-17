@@ -3,7 +3,7 @@
 class Commentaire{
 	
 	public static $dataCom = array();
-	public static $dbSite = 'mods/site/data/';
+	public static $dbSite = 'data/';
 	
 	
 	

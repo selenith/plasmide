@@ -40,23 +40,23 @@ function forgerMenu($listeMenu){
 			
 			if(count($sousMenus)>0){
 				$html .= '
-					<li class="dropdown">
-						<a href="/'.$listeMenu[$i]->get('mod').$listeMenu[$i]->get('idString').'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$listeMenu[$i]->get('nom').' <span class="caret"></span></a>
-						<ul class="dropdown-menu">';
+					<li class="nav-item dropdown">
+						<a href="/'.$listeMenu[$i]->get('mod').$listeMenu[$i]->get('idString').'" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$listeMenu[$i]->get('nom').' <span class="caret"></span></a>
+						<div class="dropdown-menu">';
 				
 				for($j = 0; $j < count($sousMenus) ; $j++){
 					$html .= '
-							<li> <a href="/'.$sousMenus[$j]->get('mod').$sousMenus[$j]->get('idString').'">'.$sousMenus[$j]->get('nom').'</a></li>';
+							<a class="dropdown-item" href="/'.$sousMenus[$j]->get('mod').$sousMenus[$j]->get('idString').'">'.$sousMenus[$j]->get('nom').'</a>';
 				}
 				
 				$html .= '
-						</ul>
+						</div>
 					</li>';
 				
 			}else{
 				
 				$html .= '
-					<li><a href="/'.$listeMenu[$i]->get('mod').$listeMenu[$i]->get('idString').'" >'.$listeMenu[$i]->get('nom').'</a></li>';	
+					<li class="nav-item"><a class="nav-link" href="/'.$listeMenu[$i]->get('mod').$listeMenu[$i]->get('idString').'" >'.$listeMenu[$i]->get('nom').'</a></li>';	
 			}
 			
 		
