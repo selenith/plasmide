@@ -45,9 +45,11 @@ Installation
 Methode automatique : 
 
 ```
-wget 
+wget https://raw.githubusercontent.com/selenith/plasmide/master/plasmide.sh
+chmod +x plasmide.sh
+./plasmide.sh install defaut
 ```
-Methode Manuelle
+Methode Manuelle : 
 Apres avoir télécharger le fichier ZIP sur https://github.com/selenith/plasmide, decompressez le et placez le contenu dans le dossier de publication de votre serveur (habituellement /var/www/).
 Pensez à donner les droits en ecriture au systeme dans les dossiers files/, core/data/, tools/HTMLPurifier, et mods/[nom du mod]/data/.
 
