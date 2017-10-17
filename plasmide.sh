@@ -116,7 +116,7 @@ install(){
 
     else
         echo -e 'Le module '$1' va etre installé.'
-        wget $urlModInstall'plasmide-'$1'/module.sh'
+        wget $urlModInstall'plasmide-'$1'/master/module.sh'
 
         if [ -f  module.sh ]; then
             chmod +x module.sh
