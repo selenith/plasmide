@@ -74,7 +74,7 @@ update(){
         
         echo -e Copie des nouveaux fichiers.
         cp -r plasmide/* ./
-        chmod +x update.sh
+        chmod +x plasmide.sh
         chown $webServerUser:$webServerUser -R ./*
        echo -e Fin de mise a jour du noyau plasmide.
     fi
@@ -108,7 +108,7 @@ install(){
         echo -e 'Decompression'
         unzip -q $sourceFile
         cp -r $unzipFileName/* ./
-        chmod +x update.sh
+        chmod +x plasmide.sh
         chown $webServerUser:$webServerUser -R ./*
         rm -Rf $unzipFileName
         rm $sourceFile
