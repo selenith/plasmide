@@ -73,6 +73,7 @@ update(){
 
         echo -e Nettoyage des fichiers temporaires
         rm -rf update
+        rm -rf $sourceFile
         echo -e $vertclair'Mise a jour du module '$modName' terminée.'$neutre
     fi
 }

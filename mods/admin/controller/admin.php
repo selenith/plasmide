@@ -7,10 +7,16 @@ include('../../auth/model/User.php');
 include('../../site/model/Article.php');
 include('../model/RssGen.php');
 
+
+function getJQueryDBPath(){    
+    return '../../../data/';      
+}
+
+
+
 function gestionArticle(){
 	
-	$arch = new Archiviste('../../site/data/');
-	$archMenu = new Archiviste('../../../core/data/');
+	$arch = new Archiviste(getJQueryDBPath());
 	$retour = array();
 	$retour['statut'] ='ok';
 	//liste des articles
@@ -35,7 +41,7 @@ function gestionArticle(){
 
 	$menu = new Archivable('Menu');
 	$menu->set('mod', 'site');
-	$menus = $archMenu->restituer($menu);
+	$menus = $arch->restituer($menu);
 	$nb = count($menus);
 	$retour['menus'] = array();
 	
@@ -48,7 +54,7 @@ function gestionArticle(){
 	}
 	
 	$menu->set('mod', 'colonnes');
-	$menus = $archMenu->restituer($menu);
+	$menus = $arch->restituer($menu);
 	$nb = count($menus);
 	for($i = 0 ; $i < $nb ; $i++){
 		$retour['menus'][$i+$compteur] = array();
@@ -67,8 +73,7 @@ function editionArticle(){
 	$retour =array();
 	$retour['statut'] = 'ok';
 	$id_art = $_REQUEST['id'];
-	$arch = new Archiviste('../../site/data/');
-	$archMenu = new Archiviste('../../../core/data/');
+	$arch = new Archiviste(getJQueryDBPath());
 	//liste des articles
 	$article = new Archivable('Article');
 	$article->set('id', $id_art);
@@ -78,7 +83,7 @@ function editionArticle(){
 	$compteur =0;
 	$menu = new Archivable('Menu');
 	$menu->set('mod', 'site');
-	$menus = $archMenu->restituer($menu);	
+	$menus = $arch->restituer($menu);	
 	$nb = count($menus);
 	$retour['menu'] = array();
 	for($i = 0 ; $i < $nb ; $i++){
@@ -88,7 +93,7 @@ function editionArticle(){
 		$compteur = $i+1;
 	}
 	$menu->set('mod', 'colonnes');
-	$menus = $archMenu->restituer($menu);
+	$menus = $arch->restituer($menu);
 	$nb = count($menus);
 	for($i = 0 ; $i < $nb ; $i++){
 		$retour['menu'][$i+$compteur] = array();
@@ -117,7 +122,7 @@ function creationArticle(){
 	$retour['statut'] ='ok';
 	
 	
-	$arch = new Archiviste('../../../core/data/');
+	$arch = new Archiviste(getJQueryDBPath());
 	
 	$compteur =0;
 	$menu = new Archivable('Menu');
@@ -169,7 +174,7 @@ function validerCreation(){
 	$ordre = str_replace("\'", "'", $ordre);
 	$ordre = str_replace('\"', '"', $ordre);
 	
-	$arch = new Archiviste('../../site/data/');
+	$arch = new Archiviste(getJQueryDBPath());
 	$article = new Archivable('Article');
 	$article->set('id_menu',  $idMenu);
 	$article->set('code',  $texte);
@@ -213,7 +218,7 @@ function validerEdition(){
 	$ordre = str_replace('\"', '"', $ordre);
 	
 	
-	$arch = new Archiviste('../../site/data/');
+	$arch = new Archiviste(getJQueryDBPath());
 	$articleAncien = new Archivable('Article');	
 	$articleAncien->set('id', $idArt);
 	$articleNouveau = new Archivable('Article');
@@ -237,7 +242,7 @@ function supprArticle(){
 	
 	if(isset($_REQUEST['id']) && $_REQUEST['id'] !=''){
 	
-		$arch = new Archiviste('../../site/data/');
+		$arch = new Archiviste(getJQueryDBPath());
 		$article = new Archivable('Article');
 		$article->set('id', $_REQUEST['id']);
 	
@@ -259,7 +264,7 @@ function inversionNews(){
 	$retour = array();
 	$retour['statut'] ='ok';
 	if(isset($_REQUEST['id'])){
-		$arch = new Archiviste('../../site/data/');
+		$arch = new Archiviste(getJQueryDBPath());
 		$article = new Archivable('Article');
 		$article->set('id', $_REQUEST['id']);
 		
@@ -291,7 +296,7 @@ function inversionComment(){
 	$retour['statut'] ='ok';
 	if(isset($_REQUEST['id'])){
 		
-		$arch = new Archiviste('../../site/data/');
+		$arch = new Archiviste(getJQueryDBPath());
 		$article = new Archivable('Article');
 		$article->set('id', $_REQUEST['id']);
 		
@@ -318,7 +323,7 @@ function inversionComment(){
 
 function listerMenu(){
 	$retour = array('statut'=> 'ok');
-	$arch = new Archiviste('../../../core/data/');
+	$arch = new Archiviste(getJQueryDBPath());
 	$menu = new Archivable('Menu');	
 	$menus = $arch->restituer($menu);
 	
@@ -358,7 +363,7 @@ function ajoutMenu(){
 	$nom = $_POST['nom'];
 	$nom = str_replace("\'", "'", $nom);
 	$nom = str_replace('\"', '"', $nom);
-	$arch = new Archiviste('../../../core/data/');
+	$arch = new Archiviste(getJQueryDBPath());
 	$menu = new Archivable('Menu');
 	//----------ajoutmeta
 	$metaDesc = $_POST['metaDesc'];
@@ -381,7 +386,7 @@ function ajoutMenu(){
 
 function supprMenu(){
 	$retour = array('statut'=> 'ok');
-	$arch = new Archiviste('../../../core/data/');
+	$arch = new Archiviste(getJQueryDBPath());
 	$menu = new Archivable('Menu');	
 	
 	if(isset($_GET['idMenu'])){
@@ -394,7 +399,7 @@ function supprMenu(){
 
 function editMenu(){
 	$retour = array('statut'=> 'ok');
-	$arch = new Archiviste('../../../core/data/');
+	$arch = new Archiviste(getJQueryDBPath());
 	$menu = new Archivable('Menu');	
 	$menuAncien = new Archivable('Menu');	
 	$menuAncien->set('id', $_POST['idMenu']);
@@ -423,11 +428,10 @@ function editMenu(){
 
 function getConfig(){
 	
-	$dataBase = '../../../core/data/';
-	$dataBaseUser = '../../auth/data/';
+	$dataBase = getJQueryDBPath();
 	
 	$retour = array('statut'=> 'ok');
-	$arch = new Archiviste($dataBaseUser);
+	$arch = new Archiviste($dataBase);
 	$user = new Archivable('User');
 	$users =  $arch->restituer($user);
 	$user = $users[0];
@@ -484,7 +488,7 @@ function validEditConf(){
 
 function getComm(){
 	$retour = array('statut'=> 'ok');
-	$arch = new Archiviste('../../site/data/');
+	$arch = new Archiviste(getJQueryDBPath());
 	
 	$comm = new Archivable('Commentaire');
 	$comms =$arch->restituer($comm);
@@ -521,7 +525,7 @@ function getComm(){
 
 function supprComm(){
 	$retour = array('statut'=> 'ok');
-	$arch = new Archiviste('../../site/data/');
+	$arch = new Archiviste(getJQueryDBPath());
 	$comm = new Archivable('Commentaire');
 	
 	$idComm = $_REQUEST['idComm'];
@@ -539,7 +543,7 @@ function validConfAccueil(){
 	$idHome = $_REQUEST['idMenu'];
 	
 	
-	$arch=new Archiviste('../../../core/data/');
+	$arch=new Archiviste(getJQueryDBPath());
 	
 	$conf = new Archivable('Config');
 	$newConf = new Archivable('Config');
@@ -556,7 +560,7 @@ function validConfAccueil(){
 function listUser(){
 	$retour = array('statut'=> 'ok');
 		
-	$arch=new Archiviste('../../auth/data/');
+	$arch=new Archiviste(getJQueryDBPath());
 	
 	$user = new Archivable('User');
 	$listUser = $arch->restituer($user);
@@ -581,7 +585,7 @@ function ajoutUser(){
 	$pass = md5($_REQUEST['pass']);
 	$droits = $_REQUEST['droits'];	
 	
-	$arch =  new Archiviste('../../auth/data/');
+	$arch =  new Archiviste(getJQueryDBPath());
 	
 	$user = new Archivable('User');
 	$user->set('login', $login);
@@ -604,7 +608,7 @@ function supprUser(){
 	if(isset($_REQUEST['idUser'])){
 	
 		$idUser = $_REQUEST['idUser'];
-		$arch =  new Archiviste('../../auth/data/');
+		$arch =  new Archiviste(getJQueryDBPath());
 	
 		$user = new Archivable('User');
 		$user->set('id', $idUser);
@@ -624,7 +628,7 @@ function editUser(){
 	$droits = $_REQUEST['droits'];
 	$pass = $_REQUEST['pass'];	
 	
-	$arch =  new Archiviste('../../auth/data/');	
+	$arch =  new Archiviste(getJQueryDBPath());	
 	$user = new Archivable('User');
 	$user->set('id', $id);
 	
@@ -652,7 +656,7 @@ function validConfTemplate(){
 	$retour = array('statut'=> 'ok');
 	$nomTemplate = $_REQUEST['nomTemplate'];
 	
-	$arch =  new Archiviste('../../../core/data/');	
+	$arch =  new Archiviste(getJQueryDBPath());	
 	$config = new Archivable('Config');
 	$config->set('nom', 'template');
 	
@@ -665,10 +669,10 @@ function validConfTemplate(){
 }
 
 function genererRss(){
-	$article = new Article();
+	$article = new Archivable('Article');
 	$article->set('pageNews', 'oui');
 	
-	$arch = new Archiviste();
+	$arch = new Archiviste(getJQueryDBPath());
 	$articles = $arch->restituer($article);
 
 	$rssGen = new RssGen();
@@ -706,7 +710,7 @@ if($login && $droits =='maitre'){
 		
 	}else if($action == 'validerCreation'){
 		$reponse = validerCreation();
-		genererRss();
+	        genererRss();
 		
 	}else if($action == 'validerEdition'){
 		$reponse = validerEdition();

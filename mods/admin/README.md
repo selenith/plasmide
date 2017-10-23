@@ -4,7 +4,7 @@ Plasmide - admin mod
 Module d'administration pour Plasmide CMS
 
 - Site :	http://plasmide.selenith.ovh
-- Version :	2.1.0
+- Version :	2.1.1
 - Date : 	2017
 - Auteur : 	Selenith - http://selenith.ovh
 

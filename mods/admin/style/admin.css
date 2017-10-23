@@ -1,37 +1,17 @@
 /** menu d'administration */
-* {margin:0;padding:0}
+
  
-html, body {height: 100%}
-.wrap {min-height: 100%}
- 
-.mainContainer {
-    overflow:auto;
-    padding-bottom: 70px;
+html{
+    min-height: 100%;
+    position:relative;
 }
  
-
- 
-/*Opera Fix*/
-body:before {
-    content:"";
-    height:100%;
-    float:left;
-    width:0;
-    margin-top:-32767px
-}
-
-
-
-	
-.image-header {
-    height: 210%;
-    margin-top: -10%;
+body{
+    margin-bottom:70px;
 }
 
 .bodyAdmin{
 	background-color:#c2cfe8;
-	margin:0;
-
 }
 
 .logoPageAdmin{
@@ -87,10 +67,10 @@ body:before {
 /*Pied de page*/
 footer{
 	text-align: center;
-	clear: both;
-	margin-top: -70px;
-    height: 70px;
-	position:relative;
+        height: 70px;
+	position:absolute;
+        width:100%;
+        bottom:0;
 	padding:4px 10px 10px 0;	
 	color: #ffffff;
 	
