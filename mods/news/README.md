@@ -4,8 +4,8 @@ Plasmide - news mod
 Module de site web pour Plasmide CMS
 
 - Site :	http://plasmide.selenith.ovh
-- Version :	1.0
-- Date : 	2016
+- Version :	1.1
+- Date : 	2017
 - Auteur : 	Selenith - http://selenith.ovh
 
 

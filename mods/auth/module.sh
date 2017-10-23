@@ -5,8 +5,8 @@ DBTables=('Token' 'User')
 webServerUser='www-data'
 repoName='plasmide-'$modName
 sourceVersionURL='https://raw.githubusercontent.com/selenith/'$repoName'/master/README.md'
-sourceFilei=$repoName'-master.zip'
-sourceURL='https://github.com/selenith/'$repoName'/'$sourceFile
+sourceFile='master.zip'
+sourceURL='https://github.com/selenith/'$repoName'/archive/'$sourceFile
 unzipFileName=$repoName'-master'
 
 createDB(){
@@ -14,12 +14,25 @@ createDB(){
     if [[ $1 == 'Token' ]]; then
         echo -e '<?php
         $structure = [];
-        ?>' > '../data/'$1'.php'
+        ?>' > '../../data/'$1'.php'
 
     elif [[ $1 == 'User' ]]; then
         echo -e '<?php
         $structure = [];
-        ?>' > '../data/'$1'.php'
+        ?>' > '../../data/'$1'.php'
+
+		echo -e '<?php
+        $histone = '"array(
+		'notifMP'=>'x',
+		'sign'=>'',
+		'notifEvent'=>'n',
+		'notifComEvent'=>'n',
+		'mail'=>'user@domain.tld',
+		'login'=>'admin',
+		'droits'=>'maitre',
+		'pass'=>'9446af7a4b7702fc9a3fccf3128717ff',
+		'avatar'=>'');
+        ?>'" > '../../data/User/1.php'
     fi    
 }
 
@@ -103,11 +116,11 @@ install(){
     fi
     for table in ${DBTables[@]}
     do
-        mkdir '../data/'$table
-        touch '../data/'$table'.php'
+        mkdir '../../data/'$table
+        touch '../../data/'$table'.php'
         createDB $table
-        chown $webServerUser:$webServerUser -R ../data/$table
-        chown $webServerUser:$webServerUser ../data/$table'.php'
+        chown $webServerUser:$webServerUser -R ../../data/$table
+        chown $webServerUser:$webServerUser ../../data/$table'.php'
     done 
                         
     # echo -e Copie des nouveaux fichiers.
@@ -120,8 +133,8 @@ install(){
 remove(){
     for table in ${DBTables[@]}
     do
-        rm -Rf '../data/'$table
-        rm '../data/'$table'.php'
+        rm -Rf '../../data/'$table
+        rm '../../data/'$table'.php'
     done 
 
    rm -Rf ../$modName

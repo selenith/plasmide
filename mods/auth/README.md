@@ -4,8 +4,8 @@ Plasmide - auth mod
 Module d'authentification pour Plasmide CMS
 
 - Site :	http://plasmide.selenith.ovh
-- Version :	2.0.2
-- Date : 	2016
+- Version :	2.1.0
+- Date : 	2017
 - Auteur : 	Selenith - http://selenith.ovh
 
 

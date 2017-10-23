@@ -5,8 +5,8 @@ DBTables=('Article' 'Commentaire')
 webServerUser='www-data'
 repoName='plasmide-'$modName
 sourceVersionURL='https://raw.githubusercontent.com/selenith/'$repoName'/master/README.md'
-sourceFilei=$repoName'-master.zip'
-sourceURL='https://github.com/selenith/'$repoName'/'$sourceFile
+sourceFile='master.zip'
+sourceURL='https://github.com/selenith/'$repoName'/archive/'$sourceFile
 unzipFileName=$repoName'-master'
 
 createDB(){
@@ -14,12 +14,12 @@ createDB(){
     if [[ $1 == 'Article' ]]; then
         echo -e '<?php
         $structure = ['"'id_menu'"'];
-        ?>' > '../data/'$1'.php'
+        ?>' > '../../data/'$1'.php'
 
     elif [[ $1 == 'Commentaire' ]]; then
         echo -e '<?php
         $structure = ['"'id_article'"'];
-        ?>' > '../data/'$1'.php'
+        ?>' > '../../data/'$1'.php'
     fi    
 }
 
@@ -64,7 +64,13 @@ update(){
         echo -e $vertclair'Le module '$modName' est à jour'$neutre
     else
         echo -e $orange$modName' necessite une mise a jour'$neutre
-        
+
+        for fichier in $(ls)
+		do
+		    if [[ $fichier != 'config.php' ]]; then
+		         rm -Rf $fichier
+		    fi
+		done
 
         echo -e 'Téléchargement de la nouvelle version'
         wget $sourceURL 
@@ -83,7 +89,8 @@ update(){
 
         echo -e Nettoyage des fichiers temporaires
         rm -rf update
-        echo -e $vertclair'Mise a jour du module '$modName' terminée.'$neutre
+		rm -rf $sourceFile
+		echo -e $vertclair'Mise a jour du module '$modName' terminée.'$neutre
     fi
 }
 
@@ -103,25 +110,26 @@ install(){
     fi
     for table in ${DBTables[@]}
     do
-        mkdir '../data/'$table
-        touch '../data/'$table'.php'
+        mkdir '../../data/'$table
+        touch '../../data/'$table'.php'
         createDB $table
-        chown $webServerUser:$webServerUser -R ../data/$table
-        chown $webServerUser:$webServerUser ../data/$table'.php'
+        chown $webServerUser:$webServerUser -R ../../data/$table
+        chown $webServerUser:$webServerUser ../../data/$table'.php'
     done 
                         
     # echo -e Copie des nouveaux fichiers.
         
     echo -e Nettoyage des fichiers temporaires
-    rm -rf install
+    rm -rf $sourceFile
+	rm -rf install
     echo -e $vertclair'installation du module '$modName' terminée.'$neutre
 }
 
 remove(){
     for table in ${DBTables[@]}
     do
-        rm -Rf '../data/'$table
-        rm '../data/'$table'.php'
+        rm -Rf '../../data/'$table
+        rm '../../data/'$table'.php'
     done 
 
    rm -Rf ../$modName
