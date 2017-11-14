@@ -143,7 +143,7 @@ class Ribosome{
 	public function supprimer($id){
 			
 		//chargement de la conf de la table
-        	require($this->cheminBase.'/'.$this->nomTable.'.php');
+        require($this->cheminBase.'/'.$this->nomTable.'.php');
 		
 		$key  = $structure;
 		$nbKey = count($key);
@@ -164,17 +164,14 @@ class Ribosome{
 	public function indexMax(){
 
 		$listeId = array();
-		
-		$dir = dir($this->cheminTable);					
-			while($nom = $dir->read()){
-				if($nom != '.' && $nom != '..'){
-					//on prend la partie id du nom du fichier
-					
-					$nom = substr ( $nom , 0 , strlen($nom)-4 );
-					$attr = explode("-", $nom);
-					$listeId[] = $attr[0];
-				}
-			}
+			
+		$indir = scandir($this->cheminTable);
+		$indir = array_diff($indir, array('.', '..'));
+		foreach($indir as $nom){
+		    $nom = substr ( $nom , 0 , strlen($nom)-4 );
+			$attr = explode("-", $nom);				
+			$listeId[] = $attr[0];
+		}
 		
 		$indexMax = 0;
 		if(count($listeId) > 0){
