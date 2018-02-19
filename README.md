@@ -2,10 +2,10 @@
 
 CMS PHP sans base de données
 
-- Site :	http://plasmide.selenith.ovh
+- Site :	http://plasmide.selenith.fr
 - Version :	3.3.2
 - Date : 	2017 - 11
-- Auteur : 	Selenith - http://selenith.ovh
+- Auteur : 	Selenith - http://selenith.fr
 
 
 # Presentation
